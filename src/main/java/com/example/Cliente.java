@@ -1,8 +1,39 @@
 package com.example;
 
 public class Cliente{
-    double renda ;
-    char sexo;
+   private double renda ;
+   private char sexo;
+   private boolean especial;
+
+
+    public boolean isEspecial() {
+    return especial;
+}
+
+
+public void setEspecial(boolean especial) {
+    this.especial = especial;
+}
+
+
+    public Cliente() {
+        System.out.println("Criando um cliente sem parâmentro ");
+        double aleatorio = Math.random();
+        if(aleatorio> 0.5)
+        especial = true;
+    }
+    public Cliente(double renda, char sexo) {
+        this();
+        System.out.println("Criando um cliente com parâmetro ");
+        setRenda(renda);
+       this.renda = renda;
+       this.sexo = sexo;
+
+
+        especial = true;
+    }
+
+
     public char getSexo() {
         return sexo;
     }
