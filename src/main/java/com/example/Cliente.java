@@ -4,6 +4,29 @@ public class Cliente{
    private double renda ;
    private char sexo;
    private boolean especial;
+   private String nome;
+   private String CPF;
+   private String cidade;
+
+
+    public String getNome() {
+    return nome;
+}
+
+
+public String getCPF() {
+    return CPF;
+}
+
+
+public String getCidade() {
+    return cidade;
+}
+
+
+public void setAnoNascimento(int anoNascimento) {
+    this.anoNascimento = anoNascimento;
+}
 
 
     public boolean isEspecial() {
@@ -37,16 +60,16 @@ public void setEspecial(boolean especial) {
     public char getSexo() {
         return sexo;
     }
-    public void setSexo(char sexo) {
-        if(sexo== 'M'|| sexo == 'F')
-        this.sexo = sexo;
+    public void setSexo(char c) {
+        if(c== 'M'|| c == 'F')
+        this.sexo = c;
         else System.out.println("Sexo Inválido");
     }
     public int getAnoNascimento() {
         return anoNascimento;
     }
-    public void setAnoNascimento(int anoNascimento) {
-        this.anoNascimento = anoNascimento;
+    public void setAnoNascimento(String string) {
+        this.anoNascimento = string;
     }
     int anoNascimento;
 
@@ -58,6 +81,22 @@ public void setEspecial(boolean especial) {
             this.renda = renda;
         else System.out.println("A renda deve ser maior que zero");    
     }
+
+
+    public void setNome(String string) {
+    }
+
+
+    public void setCPF(String string) {
+    }
+
+
+    public void setCidade(String string) {
+    }
+
+
+	public void setAnoNascimento(Object nextInt) {
+	}
 
 
 }

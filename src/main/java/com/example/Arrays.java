@@ -10,15 +10,15 @@ public class Arrays {
         x = 20;
         System.out.println(x);
 
-        double vetorDouble1[] = {1,2,3,4};
+        double vetorDouble1[] = {1,2,3,4,5};
         double vetorDouble2[] = vetorDouble1;
 
-        int vetor3[] = new int[4];
+        int vetor3[] = new int[6];
         vetor3[0] = 100;
         vetor3[1] = 200;
         vetor3[2] = 300;
         vetor3[3] = 400;
-        //vetor3[4] = 500;
+        vetor3[4] = 500;
         System.out.println(vetorDouble2);
 
 
@@ -30,12 +30,13 @@ public class Arrays {
         System.out.println("vetor da posição 3: "+ vetorDouble2[3]);
         System.out.println();
 
-        double vetor[] = {10, 20, 30,40};
+        double vetor[] = {10, 20, 30,40, 50};
         //System.out.println(Arrays.toString(vetor));
         System.out.println("Vetor na Posição 0 : "+ vetor[0]);
         System.out.println("Vetor na Posição 2 : "+ vetor[1]);
         System.out.println("Vetor na Posição 3 : "+ vetor[2]);
         System.out.println("Vetor na Posição 4 : "+ vetor[3]);
     }
-    
+
+   
 }
