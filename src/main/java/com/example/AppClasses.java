@@ -3,10 +3,7 @@ public class AppClasses {
     
     public static void main(String[] args) {
         Cliente cliente1 = new Cliente();
-        //cliente1.renda = 100000;
-        cliente1.setRenda(0);
-        cliente1.anoNascimento = 1940;
-        cliente1.setSexo('M');
+    
 
         System.out.println();
         System.out.println("Renda "+ cliente1.getRenda());

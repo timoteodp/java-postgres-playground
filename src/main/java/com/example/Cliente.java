@@ -7,6 +7,17 @@ public class Cliente{
    private String nome;
    private String CPF;
    private String cidade;
+private int anoNascimento;
+
+
+    public int getAnoNascimento() {
+    return anoNascimento;
+}
+
+
+public void setAnoNascimento(int anoNascimento) {
+    this.anoNascimento = anoNascimento;
+}
 
 
     public String getNome() {
@@ -24,10 +35,6 @@ public String getCidade() {
 }
 
 
-public void setAnoNascimento(int anoNascimento) {
-    this.anoNascimento = anoNascimento;
-}
-
 
     public boolean isEspecial() {
     return especial;
@@ -38,41 +45,9 @@ public void setEspecial(boolean especial) {
     this.especial = especial;
 }
 
-
-    public Cliente() {
-        System.out.println("Criando um cliente sem parâmentro ");
-        double aleatorio = Math.random();
-        if(aleatorio> 0.5)
-        especial = true;
-    }
-    public Cliente(double renda, char sexo) {
-        this();
-        System.out.println("Criando um cliente com parâmetro ");
-        setRenda(renda);
-       this.renda = renda;
-       this.sexo = sexo;
-
-
-        especial = true;
-    }
-
-
     public char getSexo() {
         return sexo;
     }
-    public void setSexo(char c) {
-        if(c== 'M'|| c == 'F')
-        this.sexo = c;
-        else System.out.println("Sexo Inválido");
-    }
-    public int getAnoNascimento() {
-        return anoNascimento;
-    }
-    public void setAnoNascimento(String string) {
-        this.anoNascimento = string;
-    }
-    int anoNascimento;
-
     double getRenda(){
         return renda;
     }
@@ -97,6 +72,29 @@ public void setEspecial(boolean especial) {
 
 	public void setAnoNascimento(Object nextInt) {
 	}
+    public Cliente() {
+        System.out.println("Criando um cliente sem parâmentro ");
+        double aleatorio = Math.random();
+        if(aleatorio> 0.5)
+        especial = true;
+    }
+    public Cliente(double renda, char sexo) {
+        this();
+        System.out.println("Criando um cliente com parâmetro ");
+        setRenda(renda);
+       this.renda = renda;
+       this.sexo = sexo;
+
+
+        especial = true;
+    }
+
+
+    public void setSexo(char c) {
+        if(c== 'M'|| c == 'F')
+        this.sexo = c;
+        else System.out.println("Sexo Inválido");
+    }
 
 
 }

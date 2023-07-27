@@ -25,6 +25,8 @@ public class ClasseScanner {
             cliente1.setSexo(sexo.charAt(0));
         }
 
+        
+
         System.out.println();
         System.out.println("Renda "+ cliente1.getRenda());
         System.out.println("Sexo: "+ cliente1.getSexo());
@@ -32,14 +34,6 @@ public class ClasseScanner {
         System.out.println("Especial: " + cliente1.isEspecial());
         System.out.println();
 
-       
-
-
-       
-
-
-
-
-
+    
     }
 }
