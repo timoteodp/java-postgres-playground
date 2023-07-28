@@ -73,14 +73,14 @@ public void setEspecial(boolean especial) {
 	public void setAnoNascimento(Object nextInt) {
 	}
     public Cliente() {
-        System.out.println("Criando um cliente sem parâmentro ");
+       //System.out.println("Criando um cliente sem parâmentro ");
         double aleatorio = Math.random();
         if(aleatorio> 0.5)
         especial = true;
     }
     public Cliente(double renda, char sexo) {
         this();
-        System.out.println("Criando um cliente com parâmetro ");
+        //System.out.println("Criando um cliente com parâmetro ");
         setRenda(renda);
        this.renda = renda;
        this.sexo = sexo;

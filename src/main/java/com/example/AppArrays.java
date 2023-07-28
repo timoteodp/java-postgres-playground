@@ -1,7 +1,7 @@
 package com.example;
 
 
-public class Arrays {
+public class AppArrays {
 
     public static void main(String[] args) {
         int x = 10;

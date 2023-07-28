@@ -2,7 +2,7 @@ package com.example;
 
 import java.util.Scanner;
 
-public class ClasseScanner {
+public class AppClasseScanner {
     
     public static void main(String[] args) {
         Cliente cliente1 = new Cliente();
