@@ -7,7 +7,7 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "Manoel Campos da Silva Filho",
+  "author": "Timóteo Dima Pereira",
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^8.0.2"
