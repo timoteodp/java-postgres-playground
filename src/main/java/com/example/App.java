@@ -12,7 +12,6 @@ public class App {
     public static void main(String[] args) {
         new App();
     }
-
     public App(){
         try(var conn = getConnection()){
             carregarDriverJDBC();
@@ -23,7 +22,6 @@ public class App {
             System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
         }        
     }
-
     private void listarDadosTabela(Connection conn, String tabela) {
         var sql = "select * from " + tabela;
         //System.out.println(sql);
@@ -66,9 +64,7 @@ public class App {
         } catch(SQLException e){
             System.err.println("Erro ao executar consulta SQL: " + e.getMessage());
         }
-        
     }
-
     private void listarEstados(Connection conn) {
         try{
             System.out.println("Conexão com o banco realizada com sucesso.");
@@ -83,11 +79,9 @@ public class App {
             System.err.println("Não foi possível executar a consulta ao banco: " + e.getMessage());
         }
     }
-
     private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
     }
-
     private void carregarDriverJDBC() {
         try {
             Class.forName("org.postgresql.Driver");
