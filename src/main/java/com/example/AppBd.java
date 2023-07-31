@@ -17,7 +17,8 @@ public class AppBd {
             carregarDriverJDBC();
             listarEstados(conn);
             localizarEstado(conn, "DF");
-            listarDadosTabela(conn, "produto");
+           // listarDadosTabela(conn, "produto");
+            listarDadosTabela(conn, "cliente");
         } catch (SQLException e) {
             System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
         }        
