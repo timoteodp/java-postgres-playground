@@ -1,6 +1,6 @@
-package com.example;
+package com.example.model;
 
-public class Marca {
+public class RegiaoGeografica {
     private Long id;
     private String nome;
     public Long getId() {
@@ -15,6 +15,7 @@ public class Marca {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
+
     
 }

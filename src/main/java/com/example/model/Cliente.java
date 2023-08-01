@@ -1,4 +1,4 @@
-package com.example;
+package com.example.model;
 
 public class Cliente{
    private double renda ;
@@ -48,7 +48,7 @@ public void setEspecial(boolean especial) {
     public char getSexo() {
         return sexo;
     }
-    double getRenda(){
+    public double getRenda(){
         return renda;
     }
     public void setRenda(double renda) {

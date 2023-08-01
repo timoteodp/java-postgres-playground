@@ -1,19 +1,18 @@
 package com.example;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class AppBd {
-    private static final String PASSWORD = "";
-    private static final String USERNAME = "gitpod";
-    private static final String JDBC_URL = "jdbc:postgresql://localhost/postgres";
+import com.example.DAO.connectionManager;
+import com.example.model.Marca;
+import com.example.model.Produto;
 
+public class AppBd {
     public static void main(String[] args) {
         new AppBd();
     }
     public AppBd(){
-        try(var conn = getConnection()){
+        try(var conn = connectionManager.getConnection()){
             carregarDriverJDBC();
             listarEstados(conn);
             localizarEstado(conn, "DF");
@@ -21,39 +20,23 @@ public class AppBd {
             //listarDadosTabela(conn, "cliente");
 
             var marca = new Marca();
-            marca.setId(1L);
+            marca.setId(2L);
 
             var produto = new Produto();
+            produto.setId(210L);
             produto.setMarca(marca);
-            produto.setValor(129);
-            produto.setNome("Produto Teste 4");
+            produto.setValor(300);
+            produto.setNome("Produto Teste 785");
         
-            
-            
             inserirProduto(conn, produto);
-            excluirProduto(conn, 210);
+            alterarProduto(conn, produto);
             listarDadosTabela(conn, "produto");
-
-
+            excluirProduto(conn, 204);
+        
         } catch (SQLException e) {
             System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
         }        
     }
-    private void excluirProduto(Connection conn, long id) {
-        var sql = "delete from produto where id = ?";
-   
-        try {
-           var statement = conn.prepareStatement(sql);
-            statement.setLong(1, id);
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("Erro na exlusão: " + e.getMessage());
-        }
-       
-    }
-
-
-    
     private void inserirProduto(Connection conn, Produto produto) {
         var sql = "insert into produto (nome, marca_id, valor) values (?,?,?)";
         try (var statement = conn.prepareStatement(sql)) {
@@ -64,6 +47,18 @@ public class AppBd {
 
         } catch (SQLException e) {
             System.err.println("Erro na execução da consulta: " + e.getMessage());
+        }
+    }
+    private void alterarProduto(Connection conn, Produto produto) {
+        var sql = "update produto set nome = ?  marca_id= ?, valor = ?) where id =?)";
+        try (var statement = conn.prepareStatement(sql)) {
+            statement.setString(1, produto.getNome());
+            statement.setLong(2, produto.getMarca().getId());
+            statement.setDouble(3, produto.getValor());
+            statement.setLong(4, produto.getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erro na alteração do Produto " + e.getMessage());
         }
     }
     private void listarDadosTabela(Connection conn, String tabela) {
@@ -90,7 +85,28 @@ public class AppBd {
         } catch (SQLException e) {
             System.err.println("Erro na execução da consulta: " + e.getMessage());
         }
-        
+    }
+    private void listarEstados(Connection conn) {
+        try{
+            System.out.println("Conexão com o banco realizada com sucesso.");
+
+            var statement = conn.createStatement();
+            var result = statement.executeQuery("select * from estado");
+            while(result.next()){
+                System.out.printf("Id: %d Nome: %s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));
+            }
+            System.out.println();
+        } catch (SQLException e) {
+            System.err.println("Não foi possível executar a consulta ao banco: " + e.getMessage());
+        }
+    }
+   
+    private void carregarDriverJDBC() {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Não foi possível carregar a biblioteca para acesso ao banco de dados: " + e.getMessage());
+        }
     }
     private void localizarEstado(Connection conn, String uf) {
         try{
@@ -108,28 +124,21 @@ public class AppBd {
             System.err.println("Erro ao executar consulta SQL: " + e.getMessage());
         }
     }
-    private void listarEstados(Connection conn) {
-        try{
-            System.out.println("Conexão com o banco realizada com sucesso.");
-
-            var statement = conn.createStatement();
-            var result = statement.executeQuery("select * from estado");
-            while(result.next()){
-                System.out.printf("Id: %d Nome: %s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));
-            }
-            System.out.println();
-        } catch (SQLException e) {
-            System.err.println("Não foi possível executar a consulta ao banco: " + e.getMessage());
-        }
-    }
-    private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
-    }
-    private void carregarDriverJDBC() {
+    private void excluirProduto(Connection conn, long id) {
+        var sql = "delete from produto where id = ?";
         try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Não foi possível carregar a biblioteca para acesso ao banco de dados: " + e.getMessage());
+           var statement = conn.prepareStatement(sql);
+            statement.setLong(1, id);
+            if (statement.executeUpdate() ==1 )
+                 System.out.println(" Produto exluido com sucesso");
+            else System.out.println(" Produto não localizado");
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Erro na exlusão: " + e.getMessage());
         }
+       
     }
-}
+} 
+
+   
+    
