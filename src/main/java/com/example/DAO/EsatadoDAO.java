@@ -10,9 +10,10 @@ public class EsatadoDAO {
     public EsatadoDAO(Connection conn) {
         this.conn = conn;
     }
-    private void listar() {
+        public void listar() {
         try{
             var statement = conn.createStatement();
+
             var result = statement.executeQuery("select * from estado");
             while(result.next()){
                 System.out.printf("Id: %d Nome: %s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));

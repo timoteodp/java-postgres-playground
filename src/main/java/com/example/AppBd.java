@@ -14,8 +14,8 @@ public class AppBd {
     public AppBd(){
         try(var conn = connectionManager.getConnection()){
             carregarDriverJDBC();
-            listarEstados(conn);
-            localizarEstado(conn, "DF");
+           // listarEstados(conn);
+           // localizarEstado(conn, "DF");
           
             //listarDadosTabela(conn, "cliente");
 
