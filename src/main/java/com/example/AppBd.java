@@ -31,7 +31,7 @@ public class AppBd {
             inserirProduto(conn, produto);
             alterarProduto(conn, produto);
             listarDadosTabela(conn, "produto");
-            excluirProduto(conn, 204);
+           // excluirProduto(conn, 204);
         
         } catch (SQLException e) {
             System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
@@ -86,59 +86,15 @@ public class AppBd {
             System.err.println("Erro na execução da consulta: " + e.getMessage());
         }
     }
-    private void listarEstados(Connection conn) {
-        try{
-            System.out.println("Conexão com o banco realizada com sucesso.");
-
-            var statement = conn.createStatement();
-            var result = statement.executeQuery("select * from estado");
-            while(result.next()){
-                System.out.printf("Id: %d Nome: %s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));
-            }
-            System.out.println();
-        } catch (SQLException e) {
-            System.err.println("Não foi possível executar a consulta ao banco: " + e.getMessage());
-        }
-    }
-   
     private void carregarDriverJDBC() {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             System.err.println("Não foi possível carregar a biblioteca para acesso ao banco de dados: " + e.getMessage());
         }
+     }
+   
     }
-    private void localizarEstado(Connection conn, String uf) {
-        try{
-            //var sql = "select * from estado where uf = '" + uf + "'"; //suscetível a SQL Injection
-            var sql = "select * from estado where uf = ?";
-            var statement = conn.prepareStatement(sql);
-            //System.out.println(sql);
-            statement.setString(1, uf);
-            var result = statement.executeQuery();
-            if(result.next()){
-                System.out.printf("Id: %d Nome: %s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));
-            }
-            System.out.println();
-        } catch(SQLException e){
-            System.err.println("Erro ao executar consulta SQL: " + e.getMessage());
-        }
-    }
-    private void excluirProduto(Connection conn, long id) {
-        var sql = "delete from produto where id = ?";
-        try {
-           var statement = conn.prepareStatement(sql);
-            statement.setLong(1, id);
-            if (statement.executeUpdate() ==1 )
-                 System.out.println(" Produto exluido com sucesso");
-            else System.out.println(" Produto não localizado");
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("Erro na exlusão: " + e.getMessage());
-        }
-       
-    }
-} 
 
    
     

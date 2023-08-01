@@ -3,9 +3,10 @@ package com.example.model;
 public class Esatados {
     private Long id;
     private String nome;
-    private String uf; 
+    private String uf;
     private RegiaoGeografica regiao;
     private int areakm2;
+    private int populacao;
     public Long getId() {
         return id;
     }
@@ -42,7 +43,7 @@ public class Esatados {
     public void setPopulacao(int populacao) {
         this.populacao = populacao;
     }
-    private int populacao;
+    
 
     
     
