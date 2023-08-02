@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import com.example.model.Produto;
 
-public class ProdutoDAO {
-    private Connection conn;
-
-public ProdutoDAO(Connection conn) {
-        this.conn = conn;
+public class ProdutoDAO  extends DAO{       
+    
+    public ProdutoDAO(Connection conn) {
+        super(conn);
+       
     }
+
     public void listar() {
         try{
             var statement = conn.createStatement();
@@ -23,7 +24,6 @@ public ProdutoDAO(Connection conn) {
             System.err.println("Não foi possível executar a consulta ao banco: " + e.getMessage());
         }
     }
-
 public void excluir(long id) {
         var sql = "delete from produto where id = ?";
     try {

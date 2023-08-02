@@ -3,7 +3,7 @@ package com.example;
 import java.sql.SQLException;
 
 import com.example.dao.DAO;
-import com.example.dao.EsatadoDAO;
+import com.example.dao.EstadoDAO;
 import com.example.dao.ProdutoDAO;
 import com.example.dao.connectionManager;
 import com.example.model.Marca;
@@ -18,11 +18,14 @@ public class AppBd {
     public AppBd(){
     
     try(var conn = connectionManager.getConnection()){ 
-        var estadoDAO = new EsatadoDAO(conn); 
+        var estadoDAO = new EstadoDAO(conn); 
         
-           estadoDAO.listar();
-        
-           estadoDAO.excluir(27L);
+           var listaEstados = estadoDAO.listar();
+           for (var estado : listaEstados) {
+            System.out.println(estado);
+           }
+
+          // estadoDAO.excluir(27L);
            estadoDAO.localizar("PR");
           
             var marca = new Marca();
@@ -36,11 +39,10 @@ public class AppBd {
 
             var produtoDAO = new ProdutoDAO(conn);
             produtoDAO.alterar(produto);
-            //produtoDAO.listar();
             produtoDAO.excluir(204L);
           
-            var dao = new DAO(conn);
-            dao.listar("produto");
+            //var dao = new DAO(conn);
+           // dao.listar("produto");
         }catch (SQLException e){
             System.out.println("Não foi possível connectar ao banco de dados: " + e.getMessage());
         } 
