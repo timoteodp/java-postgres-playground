@@ -1,4 +1,4 @@
-package com.example.DAO;
+package com.example.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -7,10 +7,22 @@ public class EsatadoDAO {
 
     private Connection conn;
 
-    public EsatadoDAO(Connection conn) {
+public EsatadoDAO(Connection conn) {
         this.conn = conn;
     }
-        public void listar() {
+public void excluir(long id) {
+        var sql = "delete from estado where id = ?";
+    try {
+        var statement = conn.prepareStatement(sql);
+        statement.setLong(1, id);
+        if (statement.executeUpdate() == 1)
+                System.out.println(" Estado exluido com sucesso");
+        else System.out.println(" Estado não localizado");
+    } catch (SQLException e) {
+            System.err.println("Erro na exlusão: " + e.getMessage());
+        }
+    }
+public void listar() {
         try{
             var statement = conn.createStatement();
 
@@ -39,18 +51,5 @@ public class EsatadoDAO {
             System.err.println("Erro ao executar consulta SQL: " + e.getMessage());
         }
     }
-    public void excluirProduto(Connection conn, long id) {
-        var sql = "delete from produto where id = ?";
-        try {
-           var statement = conn.prepareStatement(sql);
-            statement.setLong(1, id);
-            if (statement.executeUpdate() ==1 )
-                 System.out.println(" Produto exluido com sucesso");
-            else System.out.println(" Produto não localizado");
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("Erro na exlusão: " + e.getMessage());
-        }
     
-    }
 }
