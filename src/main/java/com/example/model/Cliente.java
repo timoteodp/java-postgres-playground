@@ -8,6 +8,7 @@ public class Cliente{
    private String CPF;
    private String cidade;
 private int anoNascimento;
+public Object idade;
 
 
     public int getAnoNascimento() {
