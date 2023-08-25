@@ -14,5 +14,8 @@
         "org.mockito.Answers.*"
     ],
     "maven.executable.preferMavenWrapper": false,
-    "terminal.integrated.defaultProfile.linux": "zsh"
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "GitpodVNC.openVNC": false,
+    "GitpodVNC.startVNC": false,
+    "GitpodVNC.stopVNC": false
 }
