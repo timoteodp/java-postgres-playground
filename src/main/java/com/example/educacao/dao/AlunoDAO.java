@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.example.dao.DAO;
-import com.example.educacao.model.Aluno;
+//import com.example.educacao.model.Aluno;
 
 public class AlunoDAO extends DAO{
     public AlunoDAO(Connection conn) {

@@ -6,8 +6,6 @@ import com.example.dao.ConnectionManager;
 import com.example.dao.DAO;
 import com.example.dao.EstadoDAO;
 import com.example.dao.ProdutoDAO;
-import com.example.model.Marca;
-import com.example.model.Produto;
 
 public class AppBd {
     public static void main(String[] args) {
