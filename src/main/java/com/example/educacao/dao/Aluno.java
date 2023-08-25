@@ -7,8 +7,8 @@ import java.sql.Statement;
 import com.example.dao.DAO;
 //import com.example.educacao.model.Aluno;
 
-public class AlunoDAO extends DAO{
-    public AlunoDAO(Connection conn) {
+public class Aluno extends DAO{
+    public Aluno(Connection conn) {
         super(conn);
     }
 
@@ -25,6 +25,13 @@ public class AlunoDAO extends DAO{
         } catch (SQLException e) {
             throw new RuntimeException("Nao foi possivel inserir o aluno", e);
         }
+    }
+
+    private void setMatricula(int int1) {
+    }
+
+    private String getNome() {
+        return null;
     }
 
     public void inserirNota(int idDisciplina, double nota, int matricula){
