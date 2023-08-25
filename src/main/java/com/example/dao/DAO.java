@@ -9,6 +9,7 @@ public class DAO {
     public DAO(Connection conn) {
         this.conn = conn;
     }
+
     public void listar(String tabela) {
         var sql = "select * from " + tabela;
         //System.out.println(sql);
@@ -26,12 +27,13 @@ public class DAO {
 
             while(result.next()){
                 for (int i = 1; i <= cols; i++) {
-                    System.out.printf("%-30s | ", result.getString(i));
+                    System.out.printf("%-25s | ", result.getString(i));
                 }
                 System.out.println();
             }
         } catch (SQLException e) {
             System.err.println("Erro na execução da consulta: " + e.getMessage());
         }
-    }    
+        
+    }
 }
