@@ -17,5 +17,6 @@
     "terminal.integrated.defaultProfile.linux": "zsh",
     "GitpodVNC.openVNC": false,
     "GitpodVNC.startVNC": false,
-    "GitpodVNC.stopVNC": false
+    "GitpodVNC.stopVNC": false,
+    "java.debug.settings.onBuildFailureProceed": true
 }
